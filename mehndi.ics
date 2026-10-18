@@ -1,0 +1,15 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fabiha & Farooq//Wedding//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:mehndi@fabiha-farooq-wedding
+DTSTAMP:20261018T000000Z
+DTSTART;VALUE=DATE:20261105
+DTEND;VALUE=DATE:20261106
+SUMMARY:Mehndi · Fabiha & Farooq
+LOCATION:VOCO Ballroom\, Plot 3-C\, 4th Floor\, Nazimabad No. 3\, Karachi
+DESCRIPTION:Mehndi of Fabiha Siddiqui & Syed Farooq Iqbal
+END:VEVENT
+END:VCALENDAR
