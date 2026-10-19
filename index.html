@@ -10,11 +10,11 @@
 
     <!-- Link previews (WhatsApp, Facebook, etc.) -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://anassohail5000.github.io/fabihawedsfarooq/">
+    <meta property="og:url" content="https://fabihawedsfarooq.vercel.app/">
     <meta property="og:site_name" content="Fabiha &amp; Farooq">
     <meta property="og:title" content="Fabiha &amp; Farooq · Shaadi Invitation">
     <meta property="og:description" content="Mehndi · Thu 5 Nov 2026  ·  Shaadi · Sat 7 Nov 2026  ·  Karachi">
-    <meta property="og:image" content="https://anassohail5000.github.io/fabihawedsfarooq/og-image.jpg">
+    <meta property="og:image" content="https://fabihawedsfarooq.vercel.app/og-image.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta name="twitter:card" content="summary_large_image">
@@ -2733,7 +2733,7 @@
             /* ================= Dock ================= */
             var dock = document.getElementById("dock");
             var links = dock.querySelectorAll("a");
-            var targets = ["invitation", "mehndi", "shaadi", "contact"].map(function (id) { return document.getElementById(id); });
+            var targets = ["invitation", "mehndi", "shaadi", "contact"].map(function (id) { return document.getElementById(id); }).filter(Boolean);
             function onScroll() {
                 dock.classList.toggle("is-visible", window.scrollY > 300);
                 var mid = window.scrollY + window.innerHeight * .45, active = null;
