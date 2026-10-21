@@ -34,6 +34,13 @@ EVENTS = {
         "summary": "Shaadi · Saturday 7 November 2026 · Sky Deck Banquet, Karachi",
         "files": ["qr/shadi.svg", "shadi.ics"],
     },
+    "valima": {
+        "label": "Valima",
+        "url": "https://fabihawedsfarooq-valima.vercel.app/",
+        "cover": '<b style="color:var(--sage-deep)">Valima · Monday 9 Nov 2026</b> · Karachi',
+        "summary": "Valima · Monday 9 November 2026 · Oasis Banquet, Karachi",
+        "files": ["qr/valima.svg", "valima.ics"],
+    },
 }
 
 # Shrinks the cover so it fits a 1200x630 link-preview card.

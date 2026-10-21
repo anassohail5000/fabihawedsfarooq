@@ -28,7 +28,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@500&display=swap&text=%D9%85%DB%81%D9%86%D8%AF%DB%8C%20%D8%B4%D8%A7%D8%AF%DB%8C%20%D8%AE%D9%88%D8%B4%20%D8%A2%D9%85%D8%AF%DB%8C%D8%AF%20%D8%B7%D8%A7%D9%84%D8%A8%D9%90%20%D8%AF%D8%B9%D8%A7" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@500&display=swap&text=%D9%85%DB%81%D9%86%D8%AF%DB%8C%20%D8%B4%D8%A7%D8%AF%DB%8C%20%D9%88%D9%84%DB%8C%D9%85%DB%81%20%D8%AE%D9%88%D8%B4%20%D8%A2%D9%85%D8%AF%DB%8C%D8%AF%20%D8%B7%D8%A7%D9%84%D8%A8%D9%90%20%D8%AF%D8%B9%D8%A7" rel="stylesheet">
 
     <style>
         :root {
@@ -47,6 +47,12 @@
             --maroon: #8E1B2E;
             --rust: #B5562B;
             --rust-deep: #8A3A17;
+
+            /* valima */
+            --sage: #7C9A7E;
+            --sage-deep: #3F5B45;
+            --sage-pale: #DCE5D3;
+            --champagne: #E9D8B4;
 
             /* mehndi */
             --yellow: #FFD54A;
@@ -1277,6 +1283,120 @@
             margin-bottom: 20px;
         }
 
+        /* ---------- Valima chapter: ivory, champagne gold, sage ---------- */
+        .chapter--valima {
+            --accent: #4F6F55;
+            --accent-ink: var(--sage-deep);
+            background: var(--pattern-gold),
+                radial-gradient(70% 50% at 0% 100%, rgba(233, 216, 180, .55), transparent 70%),
+                radial-gradient(70% 50% at 100% 100%, rgba(233, 216, 180, .55), transparent 70%),
+                radial-gradient(120% 80% at 50% 0%, #A9BE9E 0%, #C6D5BC 30%, var(--sage-pale) 55%, #AFC2A3 100%);
+            background-size: 88px 88px, 100% 100%, 100% 100%, 100% 100%;
+            color: var(--sage-deep);
+        }
+
+        .chapter--valima .chapter__urdu {
+            color: var(--sage-deep);
+            text-shadow: 0 2px 0 #FFFDF6, 0 6px 18px rgba(63, 91, 69, .25);
+        }
+
+        .chapter--valima .chapter__title {
+            color: var(--sage-deep);
+        }
+
+        .chapter--valima .count__unit,
+        .chapter--valima .count__today {
+            background: rgba(255, 253, 246, .8);
+            border: 1px solid rgba(196, 154, 74, .45);
+            color: var(--sage-deep);
+        }
+
+        .chapter--valima .count__label {
+            color: #6B7F6A;
+        }
+
+        .ecard--valima {
+            border-radius: 28px;
+            padding-top: 0;
+            overflow: hidden;
+            background: var(--pattern-rust), radial-gradient(120% 70% at 50% 100%, #FFFDF8 0%, #FBF7EE 60%, #F2EBDB 100%);
+            background-size: 88px 88px, 100% 100%;
+            border: 1px solid rgba(233, 216, 180, .9);
+            outline: 1px solid rgba(196, 154, 74, .6);
+            outline-offset: -10px;
+        }
+
+        .ecard--valima .ecard__arch {
+            position: relative;
+            width: calc(100% + var(--pad) * 2);
+            margin: 0 calc(var(--pad) * -1) 34px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 44px 20px 46px;
+            background: var(--pattern-gold), radial-gradient(110% 130% at 50% 0%, #93AE92 0%, #5F7F64 55%, var(--sage-deep) 100%);
+            background-size: 88px 88px, 100% 100%;
+        }
+
+        .ecard--valima .ecard__arch::before {
+            content: "";
+            position: absolute;
+            inset: 18px 18px 12px;
+            border: 1px solid rgba(233, 216, 180, .6);
+            border-bottom: 0;
+            border-radius: 16px 16px 0 0;
+            pointer-events: none;
+        }
+
+        /* motia (jasmine) fringe along the band's edge */
+        .ecard--valima .ecard__arch::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -11px;
+            height: 16px;
+            background:
+                linear-gradient(var(--champagne), var(--champagne)) 0 0 / 100% 1.5px no-repeat,
+                radial-gradient(ellipse 3.4px 5.6px at 9px 8px, #FFFDF6 92%, transparent 100%) 0 0 / 18px 16px repeat-x,
+                radial-gradient(circle at 9px 2px, var(--gold) 1.6px, transparent 2.1px) 0 0 / 18px 16px repeat-x;
+            filter: drop-shadow(0 1px 1px rgba(63, 91, 69, .35));
+        }
+
+        .ecard--valima .ecard__day {
+            background: var(--foil);
+            color: var(--sage-deep);
+            font-weight: 500;
+        }
+
+        .ecard--valima .ecard__date-num {
+            background: var(--foil);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .ecard--valima .ecard__date-rest {
+            color: #F4EBD6;
+        }
+
+        .ecard--valima .ecard__actions {
+            margin-bottom: 20px;
+        }
+
+        .chip--valima {
+            background: linear-gradient(120deg, #5F7F64, #A9B98E);
+        }
+
+        .chip--valima .chip__date {
+            color: var(--sage-deep);
+        }
+
+        .dock a[data-section="valima"].is-active {
+            background: linear-gradient(120deg, #5F7F64, #A9B98E);
+            color: #fff;
+        }
+
         /* ---------- Closing ---------- */
         .closing {
             position: relative;
@@ -2150,6 +2270,25 @@
                 var small = W < 560;
                 var top = 10, s = "", strands = "", maxY = 0;
 
+                if (mode === "motia") {
+                    // Motia larian: strings of jasmine buds with ivory and blush roses
+                    var gapM = small ? 30 : 38, nm = Math.floor(W / gapM), offM = (W - (nm - 1) * gapM) / 2;
+                    for (var im = 0; im < nm; im++) {
+                        var xm = offM + im * gapM, lenM = 5 + Math.round(2 + 2.5 * Math.sin(im * 1.3) + (im % 3));
+                        var gm = '<g class="strand" style="animation-delay:' + (-im * .41) + 's"><path d="M' + xm + ' 0v' + (lenM * 12 + 6) + '" stroke="#C49A4A" stroke-width=".7"/>';
+                        for (var km = 0; km < lenM; km++) gm += km % 3 === 2 ? art("jasmine", xm, top + km * 12, 13, km * 40) : art("bud", xm, top + km * 12, 11, 0);
+                        var endM = top + lenM * 12 + 4;
+                        gm += art(im % 3 === 1 ? "blush" : "ivory", xm, endM, small ? 17 : 20, im * 37) + "</g>";
+                        strands += gm;
+                        maxY = Math.max(maxY, endM + 14);
+                    }
+                    for (var tm = 0; tm <= W / (small ? 14 : 16); tm++) {
+                        s += art(pick(["jasmine", "ivory", "jasmine", "blush"], tm), tm * (small ? 14 : 16), 6, pick(["jasmine", "ivory", "jasmine", "blush"], tm) === "jasmine" ? 15 : (small ? 17 : 20), tm * 47);
+                    }
+                    el.innerHTML = '<svg viewBox="0 0 ' + W + ' ' + maxY + '" height="' + maxY + '">' + strands + s + "</svg>";
+                    return;
+                }
+
                 if (mode === "roses" || mode === "genda") {
                     // Larian: straight hanging strings (roses + motia for Shaadi, genda for Mehndi)
                     var genda = mode === "genda";
@@ -2367,6 +2506,7 @@
                 mehndi: ["#FF8A1A", "#FFB020", "#FFD54A", "#EE5A8C", "#E5487F", "#FF6F3C"],
                 shaadi: ["#6D1024", "#8E1B2E", "#A8283F", "#B5562B", "#D9804A", "#C0304A", "#E8B4B8", "#F2C9CC", "#9E1B32"]
             };
+            PALETTES.valima = ["#FFFFFF", "#FFFDF4", "#F8EEDB", "#F2C9CC", "#E9D8B4", "#FFFFFF"];
             PALETTES.mixed = PALETTES.mehndi.concat(PALETTES.shaadi);
             var FALLING_ROSES = ["p-rose-burgundy", "p-rose-red", "p-rose-rust", "p-rose-blush"];
             function petal(container, opts) {
@@ -2665,7 +2805,7 @@
             /* ================= Dock ================= */
             var dock = document.getElementById("dock");
             var links = dock.querySelectorAll("a");
-            var targets = ["invitation", "mehndi", "shaadi", "contact"].map(function (id) { return document.getElementById(id); }).filter(Boolean);
+            var targets = ["invitation", "mehndi", "shaadi", "valima", "contact"].map(function (id) { return document.getElementById(id); }).filter(Boolean);
             function onScroll() {
                 dock.classList.toggle("is-visible", window.scrollY > 300);
                 var mid = window.scrollY + window.innerHeight * .45, active = null;
