@@ -1,0 +1,15 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fabiha & Farooq//Wedding//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:valima@fabiha-farooq-wedding
+DTSTAMP:20261021T000000Z
+DTSTART;VALUE=DATE:20261109
+DTEND;VALUE=DATE:20261110
+SUMMARY:Valima · Fabiha & Farooq
+LOCATION:Oasis Banquet\, D-4 Shahrah-e-Sher Shah Suri\, Block L\, North Nazimabad\, Karachi
+DESCRIPTION:Valima of Fabiha Siddiqui & Syed Farooq Iqbal
+END:VEVENT
+END:VCALENDAR

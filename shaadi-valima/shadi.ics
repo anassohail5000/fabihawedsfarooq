@@ -1,0 +1,15 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fabiha & Farooq//Wedding//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:shadi@fabiha-farooq-wedding
+DTSTAMP:20261018T000000Z
+DTSTART;VALUE=DATE:20261107
+DTEND;VALUE=DATE:20261108
+SUMMARY:Shaadi · Fabiha & Farooq
+LOCATION:Sky Deck Banquet\, Hall A Platinum\, D-9 Shahrah-e-Sher Shah Suri\, North Nazimabad\, Karachi
+DESCRIPTION:Shaadi of Fabiha Siddiqui & Syed Farooq Iqbal
+END:VEVENT
+END:VCALENDAR

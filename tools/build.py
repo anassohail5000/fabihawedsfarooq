@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Build the per-event invitation pages from index.html (the full invite).
 
-index.html is the single source. This script writes one folder per event
-(mehndi/, shaadi/, ...) holding a copy of the page with only that event,
-plus each page's WhatsApp/Facebook preview image.
+index.html is the single source. This script writes one folder per guest
+link (mehndi/, shaadi/, mehndi-shaadi/, ...) holding a copy of the page with
+only that link's events, plus each page's WhatsApp/Facebook preview image.
 
 Run from anywhere:  python3 tools/build.py
 """
@@ -20,26 +20,47 @@ SITE_ALL = "https://fabihawedsfarooq.vercel.app/"
 
 # Every event the full invite contains, in page order.
 EVENTS = {
+    "mehndi": {"label": "Mehndi", "files": ["qr/mehndi.svg", "mehndi.ics"]},
+    "shaadi": {"label": "Shaadi", "files": ["qr/shadi.svg", "shadi.ics"]},
+    "valima": {"label": "Valima", "files": ["qr/valima.svg", "valima.ics"]},
+}
+
+# One entry per guest link: which events it shows and how it introduces them.
+VARIANTS = {
     "mehndi": {
-        "label": "Mehndi",
+        "events": ["mehndi"],
+        "title": "Mehndi Invitation",
         "url": "https://fabihawedsfarooq-mehndi.vercel.app/",
         "cover": '<b style="color:var(--rani)">Mehndi · Thursday 5 Nov 2026</b> · Karachi',
         "summary": "Mehndi · Thursday 5 November 2026 · VOCO Ballroom, Karachi",
-        "files": ["qr/mehndi.svg", "mehndi.ics"],
     },
     "shaadi": {
-        "label": "Shaadi",
+        "events": ["shaadi"],
+        "title": "Shaadi Invitation",
         "url": "https://fabihawedsfarooq-shaadi.vercel.app/",
         "cover": '<b style="color:var(--burgundy)">Shaadi · Saturday 7 Nov 2026</b> · Karachi',
         "summary": "Shaadi · Saturday 7 November 2026 · Sky Deck Banquet, Karachi",
-        "files": ["qr/shadi.svg", "shadi.ics"],
     },
     "valima": {
-        "label": "Valima",
+        "events": ["valima"],
+        "title": "Valima Invitation",
         "url": "https://fabihawedsfarooq-valima.vercel.app/",
         "cover": '<b style="color:var(--sage-deep)">Valima · Monday 9 Nov 2026</b> · Karachi',
         "summary": "Valima · Monday 9 November 2026 · Oasis Banquet, Karachi",
-        "files": ["qr/valima.svg", "valima.ics"],
+    },
+    "mehndi-shaadi": {
+        "events": ["mehndi", "shaadi"],
+        "title": "Wedding Invitation",
+        "url": "https://fabihawedsfarooq-mehndi-shaadi.vercel.app/",
+        "cover": '<b>Mehndi 5 Nov</b> · <b>Shaadi 7 Nov 2026</b> · Karachi',
+        "summary": "Mehndi · Thu 5 Nov  ·  Shaadi · Sat 7 Nov 2026  ·  Karachi",
+    },
+    "shaadi-valima": {
+        "events": ["shaadi", "valima"],
+        "title": "Wedding Invitation",
+        "url": "https://fabihawedsfarooq-shaadi-valima.vercel.app/",
+        "cover": '<b style="color:var(--burgundy)">Shaadi 7 Nov</b> · <b style="color:var(--sage-deep)">Valima 9 Nov 2026</b> · Karachi',
+        "summary": "Shaadi · Sat 7 Nov  ·  Valima · Mon 9 Nov 2026  ·  Karachi",
     },
 }
 
@@ -58,9 +79,9 @@ def sub_once(pattern, repl, text, flags=0):
 
 
 def event_page(master, key):
-    ev = EVENTS[key]
+    ev = VARIANTS[key]
     page = master.replace(SITE_ALL, ev["url"])
-    title = f"Fabiha &amp; Farooq · {ev['label']} Invitation"
+    title = f"Fabiha &amp; Farooq · {ev['title']}"
     page = sub_once(r"<title>.*?</title>", f"<title>{title}</title>", page)
     page = sub_once(r'<meta property="og:title" content="[^"]*">', f'<meta property="og:title" content="{title}">', page)
     page = sub_once(r'<meta name="description" content="[^"]*">',
@@ -69,7 +90,7 @@ def event_page(master, key):
     page = sub_once(r'<p class="cover__date">.*?</p>', f'<p class="cover__date">{ev["cover"]}</p>', page, re.S)
 
     for other, oev in EVENTS.items():
-        if other == key:
+        if other in ev["events"]:
             continue
         label = oev["label"]
         # the event's chapter, its chip on the invitation and its link in the dock
@@ -105,12 +126,12 @@ def main():
     master = (ROOT / "index.html").read_text()
     print("full invite")
     render_preview(ROOT / "index.html", ROOT / "og-image.jpg")
-    for key, ev in EVENTS.items():
+    for key, ev in VARIANTS.items():
         out = ROOT / key
-        print(f"{ev['label']} only -> {key}/")
+        print(f"{' + '.join(EVENTS[e]['label'] for e in ev['events'])} -> {key}/")
         out.mkdir(exist_ok=True)
         (out / "index.html").write_text(event_page(master, key))
-        for f in ev["files"]:
+        for f in (f for e in ev["events"] for f in EVENTS[e]["files"]):
             (out / f).parent.mkdir(parents=True, exist_ok=True)
             shutil.copy(ROOT / f, out / f)
         (out / ".vercelignore").write_text(".vercel\n.env*\n")
